@@ -5,7 +5,7 @@ import styles from './Form.module.css'
 import Alert from "../Alert/Alert";
 
 type FromProps = {
-    fetchWeather: () => void
+    fetchWeather: (search: SearchType) => Promise<void>
 }
 
 export default function Form({ fetchWeather }: FromProps) {
@@ -34,7 +34,7 @@ export default function Form({ fetchWeather }: FromProps) {
             return
         }
         // Cuando pasemos la validación mandamos a llamar la funcion fetchWeather
-        fetchWeather()
+        fetchWeather(search)
     }
 
     return (
