@@ -19,6 +19,7 @@ export type Weather = z.infer<typeof Weather>
 
 export default function useWeather() {
 
+    // State
     const [weather, setWeather] = useState<Weather>({
         name: '',
         main: {
@@ -28,9 +29,14 @@ export default function useWeather() {
         }
     })
 
+    const [loading, setLoading] = useState(false)
+
+
+
     const fetchWeather = async (search: SearchType) => {
 
         const appId = import.meta.env.VITE_API_KEY
+        setLoading(true)
         try {
             const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${search.city},${search.country}&appid=${appId}`
             const { data } = await axios(geoUrl)
@@ -49,6 +55,8 @@ export default function useWeather() {
 
         } catch (error) {
             console.log(error)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -56,6 +64,7 @@ export default function useWeather() {
 
     return {
         weather,
+        loading,
         fetchWeather,
         hasWeatherData
     }
