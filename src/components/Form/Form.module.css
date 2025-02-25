@@ -1,19 +1,53 @@
-.form,
-.field {
+.form {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.field label {
+    color: var(--white);
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .form input[type='text'],
 .form select {
     padding: 1rem;
-    background-color: transparent;
-    border: .3rem solid var(--white);
-    color: var(--white);
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #000;
     font-size: 1.8rem;
     font-weight: 400;
     border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form input[type='text']:focus,
+.form select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.form select {
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.5rem;
+    padding-right: 2.5rem;
 }
 
 .form select option {
@@ -21,8 +55,8 @@
     color: black;
 }
 
-.field ::placeholder {
-    color: var(--white);
+.field input::placeholder {
+    color: #000;
 }
 
 .submit {
@@ -34,4 +68,24 @@
     text-transform: uppercase;
     cursor: pointer;
     padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit:hover {
+    filter: brightness(110%);
+}
+
+.submit:active {
+    transform: translateY(1px);
+}
+
+/* Efecto de texto para el mensaje de alerta */
+.alert {
+    padding: 1rem;
+    color: var(--white);
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
